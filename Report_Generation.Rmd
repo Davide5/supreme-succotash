@@ -1,0 +1,31 @@
+---
+title: "Dynamic report"
+output: powerpoint_presentation
+always_allow_html: yes
+params:
+  n: NA
+  format: NA
+---
+
+```{r}
+# The `params` object is available in the document.
+params$n
+```
+
+## Slide with Bullets
+
+- Bullet 1
+- Bullet 2
+- Bullet 3
+
+## Slide with R Output
+A table
+
+```{r, echo = FALSE}
+kable(params$n, caption = paste0("This is a table output in ", params$format, " format"), format = "pandoc") %>%  kable_styling(full_width = F) %>% footnote(general = paste0("This is a table output in ", params$format, " format"),
+           general_title = "Table 1: ",
+           footnote_as_chunk = T, title_format = c("italic", "underline"))
+```
+
+
+
